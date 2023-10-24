@@ -31,7 +31,7 @@ import {
 } from "../../../../services/hooks/features/useTeamMemberCard"
 import UserHeaderCard from "./UserHeaderCard"
 import TaskInfo from "./TaskInfo"
-import { observer } from "mobx-react-lite"
+
 import { TodayWorkedTime } from "./TodayWorkTime"
 import { TimeProgressBar } from "./TimeProgressBar"
 import { useNavigation } from "@react-navigation/native"
@@ -59,83 +59,85 @@ export interface Props extends ListItemProps {
 	currentTeam: IOrganizationTeamWithMStatus | null
 }
 
-export const ListItemContent: React.FC<IcontentProps> = observer(
-	({ memberInfo, taskEdition, onPressIn }) => {
-		// HOOKS
-		const { colors, dark } = useAppTheme()
-		return (
-			<TouchableWithoutFeedback onPress={() => onPressIn()}>
-				<View
-					style={[
-						{
-							...GS.p3,
-							...GS.positionRelative,
-							backgroundColor: dark ? "#1E2025" : colors.background,
-						},
-						{ borderRadius: 14 },
-					]}
-				>
-					<View style={styles.firstContainer}>
-						<UserHeaderCard user={memberInfo.memberUser} member={memberInfo.member} />
-						<View style={styles.wrapTotalTime}>
-							<TodayWorkedTime
-								isAuthUser={memberInfo.isAuthUser}
-								memberInfo={memberInfo}
-							/>
-						</View>
-					</View>
-
-					<View style={[styles.wrapTaskTitle, { borderTopColor: colors.divider }]}>
-						<TaskInfo
-							editMode={taskEdition.editMode}
-							setEditMode={taskEdition.setEditMode}
+export const ListItemContent: React.FC<IcontentProps> = ({
+	memberInfo,
+	taskEdition,
+	onPressIn,
+}) => {
+	// HOOKS
+	const { colors, dark } = useAppTheme()
+	return (
+		<TouchableWithoutFeedback onPress={() => onPressIn()}>
+			<View
+				style={[
+					{
+						...GS.p3,
+						...GS.positionRelative,
+						backgroundColor: dark ? "#1E2025" : colors.background,
+					},
+					{ borderRadius: 14 },
+				]}
+			>
+				<View style={styles.firstContainer}>
+					<UserHeaderCard user={memberInfo.memberUser} member={memberInfo.member} />
+					<View style={styles.wrapTotalTime}>
+						<TodayWorkedTime
+							isAuthUser={memberInfo.isAuthUser}
 							memberInfo={memberInfo}
 						/>
-						{memberInfo.memberTask ? (
-							<AllTaskStatuses task={memberInfo.memberTask} />
-						) : null}
-					</View>
-					<View style={[styles.times, { borderTopColor: colors.divider }]}>
-						<View
-							style={{
-								flexDirection: "row",
-								justifyContent: "space-between",
-								alignItems: "center",
-								height: 48,
-								width: "100%",
-							}}
-						>
-							<View style={{ ...GS.alignCenter }}>
-								<WorkedOnTask period="Daily" memberInfo={memberInfo} />
-							</View>
-
-							<View style={{ ...GS.alignCenter }}>
-								<WorkedOnTask period="Total" memberInfo={memberInfo} />
-							</View>
-
-							{memberInfo.memberTask && taskEdition.estimateEditMode ? (
-								<View style={styles.estimate}>
-									<EstimateTime
-										setEditEstimate={taskEdition.setEstimateEditMode}
-										currentTask={memberInfo.memberTask}
-									/>
-								</View>
-							) : (
-								<TimeProgressBar
-									isAuthUser={memberInfo.isAuthUser}
-									memberInfo={memberInfo}
-									onPress={() => taskEdition.setEstimateEditMode(true)}
-								/>
-							)}
-						</View>
 					</View>
 				</View>
-			</TouchableWithoutFeedback>
-		)
-	},
-)
 
-const ListCardItem: React.FC<Props> = observer((props) => {
+				<View style={[styles.wrapTaskTitle, { borderTopColor: colors.divider }]}>
+					<TaskInfo
+						editMode={taskEdition.editMode}
+						setEditMode={taskEdition.setEditMode}
+						memberInfo={memberInfo}
+					/>
+					{memberInfo.memberTask ? (
+						<AllTaskStatuses task={memberInfo.memberTask} />
+					) : null}
+				</View>
+				<View style={[styles.times, { borderTopColor: colors.divider }]}>
+					<View
+						style={{
+							flexDirection: "row",
+							justifyContent: "space-between",
+							alignItems: "center",
+							height: 48,
+							width: "100%",
+						}}
+					>
+						<View style={{ ...GS.alignCenter }}>
+							<WorkedOnTask period="Daily" memberInfo={memberInfo} />
+						</View>
+
+						<View style={{ ...GS.alignCenter }}>
+							<WorkedOnTask period="Total" memberInfo={memberInfo} />
+						</View>
+
+						{memberInfo.memberTask && taskEdition.estimateEditMode ? (
+							<View style={styles.estimate}>
+								<EstimateTime
+									setEditEstimate={taskEdition.setEstimateEditMode}
+									currentTask={memberInfo.memberTask}
+								/>
+							</View>
+						) : (
+							<TimeProgressBar
+								isAuthUser={memberInfo.isAuthUser}
+								memberInfo={memberInfo}
+								onPress={() => taskEdition.setEstimateEditMode(true)}
+							/>
+						)}
+					</View>
+				</View>
+			</View>
+		</TouchableWithoutFeedback>
+	)
+}
+
+const ListCardItem: React.FC<Props> = (props) => {
 	const { colors } = useAppTheme()
 	// // STATS
 	const memberInfo = useTeamMemberCard(props.member)
@@ -369,7 +371,7 @@ const ListCardItem: React.FC<Props> = observer((props) => {
 			}
 		/>
 	)
-})
+}
 
 export default ListCardItem
 

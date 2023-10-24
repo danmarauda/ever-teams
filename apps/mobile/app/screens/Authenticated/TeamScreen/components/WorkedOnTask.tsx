@@ -1,8 +1,7 @@
 /* eslint-disable react-native/no-color-literals */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable camelcase */
-import { observer } from "mobx-react-lite"
-import React, { FC } from "react"
+import React, { FC, useMemo } from "react"
 import { View, Text, StyleSheet } from "react-native"
 import { secondsToTime } from "../../../../helpers/date"
 import { pad } from "../../../../helpers/number"
@@ -17,7 +16,7 @@ interface IProps {
 	period: "Daily" | "Total"
 }
 
-export const WorkedOnTask: FC<IProps> = observer(({ memberInfo, period }) => {
+export const WorkedOnTask: FC<IProps> = ({ memberInfo, period }) => {
 	// Get current timer seconds
 	const { isAuthUser, memberTask } = memberInfo
 
@@ -26,7 +25,9 @@ export const WorkedOnTask: FC<IProps> = observer(({ memberInfo, period }) => {
 	// activeTaskDailyStat and activeTaskTotalStat removed from useTaskStatistics call
 	const { getTaskStat } = useTaskStatistics()
 
-	const { taskTotalStat, taskDailyStat } = getTaskStat(memberTask)
+	const { taskTotalStat, taskDailyStat } = useMemo(() => {
+		return getTaskStat(memberTask)
+	}, [memberTask])
 
 	if (isAuthUser) {
 		// const { h: th, m: tm } = secondsToTime(activeTaskTotalStat?.duration || 0)
@@ -38,7 +39,9 @@ export const WorkedOnTask: FC<IProps> = observer(({ memberInfo, period }) => {
 			<>
 				{period === "Daily" ? (
 					<View style={styles.container}>
-						<Text style={[styles.totalTimeTitle, { color: dark ? "#7B8089" : "#7E7991" }]}>
+						<Text
+							style={[styles.totalTimeTitle, { color: dark ? "#7B8089" : "#7E7991" }]}
+						>
 							{translate("teamScreen.cardTodayWorkLabel")}
 						</Text>
 						<Text style={[styles.totalTimeText, { color: colors.primary }]}>
@@ -47,7 +50,9 @@ export const WorkedOnTask: FC<IProps> = observer(({ memberInfo, period }) => {
 					</View>
 				) : (
 					<View style={styles.container}>
-						<Text style={[styles.totalTimeTitle, { color: dark ? "#7B8089" : "#7E7991" }]}>
+						<Text
+							style={[styles.totalTimeTitle, { color: dark ? "#7B8089" : "#7E7991" }]}
+						>
 							{translate("teamScreen.cardTotalWorkLabel")}
 						</Text>
 						<Text style={[styles.totalTimeText, { color: colors.primary }]}>
@@ -84,7 +89,7 @@ export const WorkedOnTask: FC<IProps> = observer(({ memberInfo, period }) => {
 			)}
 		</>
 	)
-})
+}
 
 const styles = StyleSheet.create({
 	container: {

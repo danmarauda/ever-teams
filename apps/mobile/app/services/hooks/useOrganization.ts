@@ -89,6 +89,7 @@ export function useOrganizationTeam() {
 		isSuccess,
 		refetch,
 		isRefetching,
+		isLoading,
 	} = useFetchUserOrganization({
 		tenantId,
 		authToken,
@@ -117,7 +118,7 @@ export function useOrganizationTeam() {
 					authToken,
 				)
 
-				setCurrentTeam(data)
+				!isLoading && data !== currentTeam && setCurrentTeam(data)
 			} catch (error) {
 				console.log(error)
 			}

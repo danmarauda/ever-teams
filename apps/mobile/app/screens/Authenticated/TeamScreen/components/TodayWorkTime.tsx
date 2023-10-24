@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-color-literals */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable camelcase */
-import { observer } from "mobx-react-lite"
+
 import React, { FC } from "react"
 import { View, Text, StyleSheet } from "react-native"
 import { pad } from "../../../../helpers/number"
@@ -16,7 +16,7 @@ interface IProps {
 	memberInfo: I_TeamMemberCardHook
 }
 
-export const TodayWorkedTime: FC<IProps> = observer(({ isAuthUser }) => {
+export const TodayWorkedTime: FC<IProps> = ({ isAuthUser }) => {
 	const {
 		time: { m, h },
 	} = useLiveTimerStatus()
@@ -46,7 +46,7 @@ export const TodayWorkedTime: FC<IProps> = observer(({ isAuthUser }) => {
 			</Text>
 		</View>
 	)
-})
+}
 
 const styles = StyleSheet.create({
 	container: {

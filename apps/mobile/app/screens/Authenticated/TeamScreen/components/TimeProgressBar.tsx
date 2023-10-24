@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { observer } from "mobx-react-lite"
+
 import React, { FC, useMemo } from "react"
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native"
 import { AnimatedCircularProgress } from "react-native-circular-progress"
@@ -16,7 +16,7 @@ interface IProps {
 	onPress: () => unknown
 }
 
-export const TimeProgressBar: FC<IProps> = observer(({ memberInfo, isAuthUser, onPress }) => {
+export const TimeProgressBar: FC<IProps> = ({ memberInfo, isAuthUser, onPress }) => {
 	// Get current timer seconds
 	const { colors } = useAppTheme()
 
@@ -57,7 +57,7 @@ export const TimeProgressBar: FC<IProps> = observer(({ memberInfo, isAuthUser, o
 			</TouchableOpacity>
 		</View>
 	)
-})
+}
 
 const styles = StyleSheet.create({
 	progessText: {

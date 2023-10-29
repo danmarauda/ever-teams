@@ -10,7 +10,7 @@ import { PositionDropDown } from './position-dropdown';
 export const RequestToJoinModal = ({ open, closeModal }: { open: boolean; closeModal: () => void }) => {
 	const [currentTab, setCurrentTab] = useState<'ALREADY_MEMBER' | 'BECOME_MEMBER'>('ALREADY_MEMBER');
 
-	const { t } = useTranslation();
+
 
 	return (
 		<Modal isOpen={open} closeModal={closeModal}>

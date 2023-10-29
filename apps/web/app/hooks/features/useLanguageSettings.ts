@@ -33,7 +33,8 @@ export function useLanguageSettings() {
 		if (language) {
 			changeLanguage(language);
 		}
-	}, []);
+	}, [changeLanguage, user?.preferredLanguage]);
+		
 	const loadLanguagesData = useCallback(() => {
 		setActiveLanguageId(getActiveLanguageIdCookie());
 		if (user) {

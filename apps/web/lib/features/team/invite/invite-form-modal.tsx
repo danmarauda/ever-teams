@@ -66,7 +66,7 @@ export function InviteFormModal({ open, closeModal }: { open: boolean; closeModa
 					}
 				});
 		},
-		[selectedEmail, setErrors, closeModal, inviteUser]
+		[selectedEmail, setErrors, closeModal, inviteUser, t]
 	);
 
 	return (

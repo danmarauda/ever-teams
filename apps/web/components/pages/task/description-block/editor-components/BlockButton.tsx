@@ -37,7 +37,6 @@ const BlockButton = ({ format, icon: Icon, isBlockActive, className }: IMarkButt
 				TextEditorService.toggleBlock(editor, format, isBlockActive, LIST_TYPES, TEXT_ALIGN_TYPES);
 			}}
 		>
-			<Icon />
 		</button>
 	);
 };

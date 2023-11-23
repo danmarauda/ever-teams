@@ -162,7 +162,11 @@
 		"FILTER_COMMENTS": "Comentarios",
 		"FILTER_HISTORY": "Historial",
 		"FILTER_UNSUBSCRIBE": "Darse de baja",
-		"KEYBOARD_SHORTCUTS": "Atajos de teclado"
+		"KEYBOARD_SHORTCUTS": "Atajos de teclado",
+		"GITHUB_LOADING_TEXT": "Estamos instalando su integración de GitHub, espere...",
+		"GITHUB_INTEGRATION_AUTO_SYNC_TASK_TEXT": "Sincronice automáticamente tareas en su aplicación para actualizaciones fluidas y eficientes.",
+		"GITHUB_INTEGRATION_LABEL_SYNC_TASK_TEXT": "Sincronice tareas de manera selectiva asociándolas con una etiqueta específica.",
+		"GITHUB_AUTO_SYNC_LABEL": "Seleccionar etiqueta de sincronización automática"
 	},
 	"alerts": {
 		"ALERT_DELETE_ACCOUNT": "La cuenta será eliminada de todos los equipos, excepto donde eres sólo el administrador",
@@ -473,10 +477,9 @@
 	},
 	"layout": {
 		"footer": {
-			"RIGHTS_RESERVERD": "Todos los derechos reservados.",
+			"RIGHTS_RESERVED": "Todos los derechos reservados.",
 			"COPY_RIGHT1": "© {{date}}-Presente,",
-			"COPY_RIGHT2": "Equipos Siempre ",
-			"COPY_RIGHT3": "Equipos Gauzy",
+			"COPY_RIGHT2": "Ever Teams",
 			"COPY_RIGHT4": "Ever Co.",
 			"COMPANY_NAME": "Ever Co. LTD.",
 			"TERMS": "Términos del servicio",

@@ -1,4 +1,4 @@
-import { ExtendedJitsuOptions } from '@jitsu/jitsu-react/dist/useJitsu';
+import { JitsuOptions } from '@jitsu/jitsu-react/dist/useJitsu';
 import { I_SMTPRequest } from './interfaces/ISmtp';
 
 export const API_BASE_URL = '/api';
@@ -36,6 +36,7 @@ export const INVITE_CALLBACK_URL = process.env.INVITE_CALLBACK_URL;
 export const INVITE_CALLBACK_PATH = '/auth/passcode';
 export const VERIFY_EMAIL_CALLBACK_URL = process.env.VERIFY_EMAIL_CALLBACK_URL;
 export const VERIFY_EMAIL_CALLBACK_PATH = '/verify-email';
+export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 export const SMTP_FROM_ADDRESS = process.env.SMTP_FROM_ADDRESS || 'noreply@ever.team';
 export const SMTP_HOST = process.env.SMTP_HOST || '';
@@ -47,7 +48,7 @@ export const DISABLE_AUTO_REFRESH = process.env.NEXT_PUBLIC_DISABLE_AUTO_REFRESH
 
 export const APP_NAME = process.env.APP_NAME || 'Ever Teams';
 export const APP_SIGNATURE = process.env.APP_SIGNATURE || 'Ever Teams';
-export const APP_LOGO_URL = process.env.APP_LOGO_URL || 'https://app.ever.team/assets/gauzy-team.png';
+export const APP_LOGO_URL = process.env.APP_LOGO_URL || 'https://app.ever.team/assets/ever-teams.png';
 export const APP_LINK = process.env.APP_LINK || 'https://ever.team/';
 
 export const CHARACTER_LIMIT_TO_SHOW = 20;
@@ -76,13 +77,14 @@ export const BOARD_BACKEND_POST_URL = process.env.NEXT_PUBLIC_BOARD_BACKEND_POST
 export const BOARD_FIREBASE_CONFIG = process.env.NEXT_PUBLIC_BOARD_FIREBASE_CONFIG;
 
 // Jitsu
-export const jitsuConfiguration: ExtendedJitsuOptions = {
-	host: process.env.JITSU_BROWSER_URL || '',
-	writeKey: process.env.JITSU_BROWSER_WRITE_KEY || '',
-	disabled: false,
-	echoEvents: false, //if enabled - events will be sent to the console but no data sent to Jitsu strange this is not mentioned in the documentation https://github.com/jitsucom/jitsu/blob/35c4ecaff54d61a87853381cb17262b7bfbd4a6e/libs/jitsu-js/src/jitsu.ts#L40
+export const jitsuConfiguration: () => JitsuOptions = () => ({
+	host: process.env.NEXT_JITSU_BROWSER_URL || '',
+	writeKey: process.env.NEXT_JITSU_BROWSER_WRITE_KEY || '',
+	// if enabled - events will be sent to the console but no data sent to Jitsu.
+	// Strange this is not mentioned in the documentation https://github.com/jitsucom/jitsu/blob/35c4ecaff54d61a87853381cb17262b7bfbd4a6e/libs/jitsu-js/src/jitsu.ts#L40
+	echoEvents: false,
 	debug: false
-};
+});
 
 // Github Integration
 export const GITHUB_APP_NAME = process.env.NEXT_PUBLIC_GITHUB_APP_NAME || 'ever-github';

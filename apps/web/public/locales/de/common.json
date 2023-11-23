@@ -165,7 +165,12 @@
 		"FILTER_HISTORY": "Historie",
 		"FILTER_UNSUBSCRIBE": "Abmelden",
 
-		"KEYBOARD_SHORTCUTS": "Tastenkombinationen"
+		"KEYBOARD_SHORTCUTS": "Tastenkombinationen",
+
+		"GITHUB_LOADING_TEXT": "Wir installieren jetzt Ihre GitHub-Integration, warten Sie...",
+		"GITHUB_INTEGRATION_AUTO_SYNC_TASK_TEXT": "Synchronisieren Sie Aufgaben in Ihrer Anwendung automatisch für nahtlose und effiziente Aktualisierungen.",
+		"GITHUB_INTEGRATION_LABEL_SYNC_TASK_TEXT": "Synchronisieren Sie Aufgaben selektiv, indem Sie sie mit einem bestimmten Label verknüpfen.",
+		"GITHUB_AUTO_SYNC_LABEL": "Auto-Sync-Label auswählen"
 	},
 	"alerts": {
 		"ALERT_DELETE_ACCOUNT": "Das Konto wird von allen Teams entfernt, außer wo Sie nur Manager sind",
@@ -488,10 +493,9 @@
 
 	"layout": {
 		"footer": {
-			"RIGHTS_RESERVERD": "Alle Rechte vorbehalten.",
+			"RIGHTS_RESERVED": "Alle Rechte vorbehalten.",
 			"COPY_RIGHT1": "© {{date}}-Gegenwart,",
 			"COPY_RIGHT2": "Ever Teams",
-			"COPY_RIGHT3": "Gauzy Teams",
 			"COPY_RIGHT4": "Ever Co.",
 			"COMPANY_NAME": "Ever Co. LTD.",
 			"TERMS": "Nutzungsbedingungen",
